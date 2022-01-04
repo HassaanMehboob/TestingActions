@@ -36,10 +36,10 @@ jobs:
       with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: vyndfurniture@gmail.com
-          password: Temp123*
+          username: i180569@nu.edu.pk
+          password: yVg3M%YM
           subject: testing
-          to: hi@yasoob.me
+          to: technicalsupport@vynd.com.au
           from: Automated Email
           ignore_cert: true
           secure: true
