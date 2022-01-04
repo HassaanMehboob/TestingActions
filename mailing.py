@@ -32,7 +32,7 @@ class Email():
 		body = "This file contains all the relevant errors that would be faced"
 
 		sender_email = "cheapernextthing@gmail.com"
-		receiver_email = "Yashdawani@vynd.com.au"
+		receiver_email = "technicalsupport@vynd.com.au"
 		password = "QweRty123*"
 
 		# Create a multipart message and set headers
