@@ -35,6 +35,7 @@ jobs:
       run: |
         if which python > /dev/null; then
           echo "python found"
+        fi  
         if ! which python > /dev/null; then
           echo "not found"
           pip install python
