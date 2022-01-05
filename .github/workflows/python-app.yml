@@ -28,7 +28,7 @@ jobs:
     - name: checking external package
       run: |
         if ! which requests > /dev/null; then
-            sudo apt-get install requests
+          pip install requests
         fi
     - name: Lint with flake8
       run: |
