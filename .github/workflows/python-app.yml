@@ -27,7 +27,13 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: checking external package
       run: |
-        dpkg -l requests
+        if ! which requests > /dev/null; then
+          echo -e "Command not found! Install? (y/n) \c"
+          read
+          if "$REPLY" = "y"; then
+            sudo apt-get install command
+          fi
+        fi
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
