@@ -30,6 +30,11 @@ jobs:
         if ! which requests > /dev/null; then
           pip install requests
         fi
+    - name: checking external python
+      run: |
+        if ! which python > /dev/null; then
+          pip install python
+        fi   
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
