@@ -24,16 +24,15 @@ Required Inputs:
 Sample Execution:
 	Email(path = 'Outputs/Errors.csv')
 '''
-
 class Email():
 	def __init__(self,path=None):
 		self.location=path
-		subject = "Errors File Attached"
-		body = "This file contains all the relevant errors that would be faced"
+		subject = "Review Analysis Report File Attached"
+		body = "This file contains reports "
 
-		sender_email = "cheapernextthing@gmail.com"
+		sender_email = "technicalreporting1@gmail.com"
 		receiver_email = "technicalsupport@vynd.com.au"
-		password = "QweRty123*"
+		password = "techreport09()"
 
 		# Create a multipart message and set headers
 		message = MIMEMultipart()
@@ -44,17 +43,34 @@ class Email():
 
 		# Add body to email
 		message.attach(MIMEText(body, "plain"))
+		# filename = str(pathlib.Path(__file__).parent.parent/"Output/ERRORS.csv")  # In same directory as script
+		
+		filename = "output.pdf"
+		# print(pathlib.Path(__file__))
+		with open(filename, "rb") as attachment:
+			# Add file as application/octet-stream
+			# Email client can usually download this automatically as attachment
+			part = MIMEBase("application", "octet-stream")
+			part.set_payload(attachment.read())
 
+		# Encode file in ASCII characters to send by email    
+		encoders.encode_base64(part)
+		s = "output.pdf"
+		# Add header as key/value pair to attachment part
+		part.add_header(
+			"Content-Disposition",
+			f"attachment; filename= {s}",
+		)
 
-
-		text = "Hi Yash!!"
+		# Add attachment to message and convert message to string
+		message.attach(part)
+		text = message.as_string()
 
 		# Log in to server using secure context and send email
 		context = ssl.create_default_context()
 		with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
 			server.login(sender_email, password)
 			server.sendmail(sender_email, receiver_email, text)
-#object creation
-a = Email()
 
+a = Email()
 
