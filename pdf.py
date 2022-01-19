@@ -11,3 +11,5 @@ def converting_to_pdf():
     f.write(a)
     f.close()
     pdfkit.from_file('output.html', 'output.pdf')
+    
+converting_to_pdf()    
