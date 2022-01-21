@@ -11,7 +11,7 @@ supabase: Client = create_client(url, key)
 
 df3 = pd.read_csv("lists.csv")
 print(df3)
-for i in range(1000):
+for i in range(len(df3)):
     print("uploading",i)
     a = df3['Original_SKU'][i]
     b = df3['sku_file_price'][i]
