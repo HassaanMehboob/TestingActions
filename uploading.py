@@ -16,5 +16,5 @@ for i in range(len(df3)):
     a = df3['Original_SKU'][i]
     b = df3['sku_file_price'][i]
     c = df3['Stock Qty'][i]
-    data = supabase.table("Inventory").insert({"SKU":str(a),"Price":b,"Quantity":c}).execute()  
+    data = supabase.table("Inventory").insert({"SKU":str(a),"Price":float(b),"Quantity":float(c)}).execute()  
     print(data)    
